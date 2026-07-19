@@ -22,6 +22,9 @@ jobs:
         run: npm ci
       - name: Typecheck, test, and build library
         run: npm run check
+      - name: Fetch base branch for Changesets
+        if: github.event_name == 'pull_request'
+        run: git fetch origin main:main
       - name: Validate Changesets state
         run: npm run changeset:status
       - name: Verify npm package contents
