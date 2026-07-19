@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 'lts/*'
+          cache: npm
+      - name: Install library dependencies
+        run: npm ci
+      - name: Typecheck, test, and build library
+        run: npm run check
+      - name: Validate Changesets state
+        run: npm run changeset:status
+      - name: Verify npm package contents
+        run: npm run pack:check

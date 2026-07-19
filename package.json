@@ -1,0 +1,63 @@
+{
+  "name": "jotai-orpc",
+  "version": "0.0.0",
+  "description": "Minimal Jotai bindings for oRPC clients",
+  "keywords": [
+    "jotai",
+    "orpc",
+    "react",
+    "rpc",
+    "typescript"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build",
+    "changeset": "changeset",
+    "changeset:status": "changeset status",
+    "commitlint": "commitlint",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "hooks:install": "lefthook install",
+    "lint": "oxlint --deny-warnings --report-unused-disable-directives",
+    "lint:fix": "oxlint --fix",
+    "pack:check": "npm pack --dry-run",
+    "prepublishOnly": "npm run check",
+    "release": "changeset publish",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "version-packages": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.1",
+    "@commitlint/cli": "21.2.1",
+    "@commitlint/config-conventional": "21.2.0",
+    "@orpc/client": "^1.14.8",
+    "jotai": "^2.20.1",
+    "lefthook": "2.1.10",
+    "oxfmt": "0.59.0",
+    "oxlint": "1.74.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.4"
+  },
+  "peerDependencies": {
+    "@orpc/client": ">=1.0.0",
+    "jotai": ">=2.0.0"
+  }
+}

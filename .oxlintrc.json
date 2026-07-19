@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "plugins": ["typescript", "unicorn", "oxc", "vitest", "react"],
+  "rules": {
+    "oxc/no-async-endpoint-handlers": "off",
+    "react/react-in-jsx-scope": "off"
+  },
+  "overrides": [
+    {
+      "files": ["test/**/*.ts"],
+      "rules": {
+        "unicorn/consistent-function-scoping": "off",
+        "vitest/require-mock-type-parameters": "off"
+      }
+    }
+  ],
+  "ignorePatterns": ["dist/**", "**/dist/**", "**/node_modules/**"],
+  "options": {
+    "maxWarnings": 0
+  }
+}
