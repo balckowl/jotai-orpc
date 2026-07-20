@@ -29,6 +29,10 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run pack:check
+      - name: Verify npm authentication
+        run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Create release pull request or publish
         uses: changesets/action@v1
         with:
