@@ -23,9 +23,10 @@ jobs:
       - name: Typecheck, test, and build library
         run: npm run check
       - name: Fetch base branch for Changesets
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.head_ref != 'changeset-release/main'
         run: git fetch origin main:main
       - name: Validate Changesets state
+        if: github.event_name == 'pull_request' && github.head_ref != 'changeset-release/main'
         run: npm run changeset:status
       - name: Verify npm package contents
         run: npm run pack:check
