@@ -46,7 +46,7 @@
     "release": "changeset publish",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "version-packages": "changeset version"
+    "version-packages": "changeset version && npm install --package-lock-only --ignore-scripts"
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.1",

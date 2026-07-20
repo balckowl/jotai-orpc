@@ -37,6 +37,7 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: npm run release
+          version: npm run version-packages
           title: 'chore: release jotai-orpc'
           commit: 'chore: release jotai-orpc'
           createGithubReleases: true
