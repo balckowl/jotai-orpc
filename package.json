@@ -1,6 +1,6 @@
 {
   "name": "jotai-orpc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Minimal Jotai bindings for oRPC clients",
   "keywords": [
     "jotai",
